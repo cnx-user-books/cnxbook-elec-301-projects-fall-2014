@@ -1,0 +1,52 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Implementation of Moment of Inertia</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52091</md:content-id>
+  <md:title>Implementation of Moment of Inertia</md:title>
+  <md:abstract/>
+  <md:uuid>2cd75bcc-817d-44c7-9d8b-cec23856d26d</md:uuid>
+</metadata>
+
+<content>
+  <section id="eip-480"><title>Introduction</title><para id="eip-584">
+To achieve scale, translation and rotation invariance in object recognition, we need to identify intrinsic traits of the object that are not affected by these operations. Moment of Inertia is mass property of a rigid body that determines the torque needed for a desired angular acceleration about an axis of rotation. Moment of inertia depends on the shape of the body and thus can be used as parameter for simple object recognition.
+</para></section><section id="eip-518"><title>Approach</title><para id="eip-914">
+
+Moment of Inertia can be calculated if given centroid of the object and it’s mass. 
+
+</para><para id="eip-296"><media id="equation1" alt="A dog sitting on a couch.">
+	   
+  <image mime-type="image/png" src="../../media/MOIequation1.png"/>
+		 
+</media>
+        </para><para id="eip-465">I is Moment of Inertia, m is the unit mass at a location of distance r from the centroid, and r is the distance from the centroid.
+</para><para id="eip-950">However a two-dimensional image does not have the mass to be used for calculation of Moment of Inertia. We can instead use the intensity of each pixel as mass of a particle located at the pixel. With that, we can calculate the Moment of Inertia of our images. Since we are only concerned with the shape of the object, we can convert the images to black and white (with intensity of each pixel being either 0 or 1) and consequently the intensity of each pixel can only take on 2 values and the Moment of Inertia can be much more easily calculated given this simple duality. </para><para id="eip-22">Actual Formula used-</para><para id="eip-940"><media id="equation2" alt="A dog sitting on a couch.">
+	   
+  <image mime-type="image/png" src="../../media/MOIequation2.png"/>
+		 
+</media>
+        </para><para id="eip-998">Diagram of Process Used to Calculate Moment of Inertia-</para><para id="eip-244"><media id="diagram" alt="Diagram">
+	   
+  <image mime-type="image/png" src="../../media/MOIDesign.png"/>
+		 
+</media>
+        </para><section id="eip-40"><title>Code</title><para id="eip-438">Main Functions Used in Matlab: 
+</para><list id="eip-280"><item>im2bw- change image to black and white</item>
+<item>bwboundaries- getting boundary indices of object</item>
+<item>regionprops- getting centroids</item></list><para id="eip-86"><media id="code1" alt="Code.">
+	   
+  <image mime-type="image/png" src="../../media/MOICode1.png"/>
+		 
+</media>
+        </para><para id="eip-13"><media id="code2" alt="Matlab code">
+	   
+  <image mime-type="image/png" src="../../media/MOICode2.png"/>
+		 
+</media>
+        </para></section></section><para id="delete_me">
+     <!-- Insert module text here -->
+  </para>
+</content>
+
+</document>

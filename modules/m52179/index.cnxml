@@ -1,0 +1,18 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Acknowledgements</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52179</md:content-id>
+  <md:title>Acknowledgements</md:title>
+  <md:abstract>Seventh Section</md:abstract>
+  <md:uuid>76156c2b-ec1b-4ad3-b37d-8bb0c61d42fc</md:uuid>
+</metadata>
+
+<content>
+  <list id="eip-349" list-type="enumerated" number-style="arabic"><item>Thanks for Dr. Richard Baraniuk’s motivation and inspiration for preparing us with enough knowledge to do this project.</item>
+<item>We would like to acknowledge our mentor Raajen Patel, who helped us come up with this idea, and who helped us understand how to test and create an adaptive filter.</item></list><para id="delete_me">
+     <!-- Insert module text here -->
+  </para>
+</content>
+
+</document>

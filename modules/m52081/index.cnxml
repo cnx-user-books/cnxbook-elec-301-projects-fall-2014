@@ -1,0 +1,78 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Implementation of Scale-Invariant Feature Transform</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52081</md:content-id>
+  <md:title>Implementation of Scale-Invariant Feature Transform</md:title>
+  <md:abstract/>
+  <md:uuid>7689f331-b92e-4bdc-8530-e5a036d041eb</md:uuid>
+</metadata>
+
+<content>
+  <section id="eip-905"><title>Introduction</title><para id="eip-268">
+The Scale- Invariant Feature Transform is an algorithm in computer vision to detect and describe points of interest in an image. 
+</para></section><section id="eip-508"><title>Approach</title><para id="eip-964">According to Prof. Dowe’s paper on Distinctive Image Features from Scale-Invariant Keypoints(2004), there are four stages to SIFT:
+
+
+</para><list id="eip-813" list-type="enumerated" number-style="arabic"><item>“Scale-space extrema detection”-	Searches the entire image for candidate interest points</item>
+<item>“Keypoint localization”-	Calculate the location and scale for each candidate, remove candidates that are not stable</item>
+<item>“Orientation assignment”-	Assign each key point with one or more orientations that are calculated based on the gradient direction at that key point location in the image</item>
+<item>“Keypoint descriptor”- For each key point, calculate the gradient in its surrounding area. This allows the transform to be distortion resistant. The above  approach “transforms image data into scale-invariant coordinates relative to local features”.</item>
+
+</list><para id="eip-37">Our project seeks to achieve scale, rotation and translation resistance. However due to time-constraint, we did not implement stage 4 “Keypoint descriptor” of SIFT.</para></section><section id="eip-84"><title>Implementation</title><section id="eip-896"><title>Stage 1</title><para id="eip-474">Apply Gaussian filters of different scales to the image. By using different scales the Gaussian filters would have different variances. Due to the inherent properties of Gaussian filters, this would “smooth” out the images, removing finer details of the image. At different scales, the details of the image that are insignificant compared to the standard deviation of the Gaussian filter applied would be removed.  The Gaussians are generated using the following formula: </para><para id="eip-924"><media id="Equation1" alt="Gaussian Generation.">
+	   
+  <image mime-type="image/jpeg" src="../../media/image1-small-16.png"/>
+		 
+</media>
+        </para><para id="eip-441">Then the image, represented as an array of digits, is convolved with the Gaussian.
+</para><para id="eip-3"><media id="Gaussian" alt="Gaussian.">
+	   
+  <image mime-type="image/jpeg" src="../../media/image2-small-18.png"/>
+		 
+</media>
+        </para><para id="eip-86">L(x,y,sigma) is the value of the resulting image at location (x,y) under the Gaussian filter with standard deviation sigma. I stands for the original image. </para><para id="eip-566">We applied Gaussians with scale 0, 1, and 2 to the image. At scale 0, we are essentially preserving the original image, at scales 1 and 2 we are “smoothing out” the image to an increasing extend. We have 3 octaves of resulting images, each octave consists of images resulting from repeated applying the gaussian filter of the same scale to the original image. After each octave, the image is down-sampled by two.
+</para><section id="eip-333"><title>Code</title><para id="eip-255"><media id="code1-2" alt="A dog sitting on a couch.">
+	   
+  <image mime-type="image/jpeg" src="../../media/image3-medium.png"/>
+		 
+</media>
+        </para><para id="eip-789">
+
+</para></section></section><section id="eip-29"><title>Stage 2</title><para id="eip-891">
+Now we have the image smoothed to different extends, with variant amount of fine detailed preserved in the resulting images. Within each octave, we use Difference of Gaussian, which is basically subtracting neighboring images from each other. Difference of Gaussian is proven to be a close approximation of scale-normalized Laplacian of Gaussian, which is shown to "produce the most stable image features compared to a range of other possible image functions, such as the gradient, Hessian, or Harris corner function”. Moreover, Difference of Gaussian is efficient to compute since it’s just subtracting images. 
+</para><section id="eip-948"><title>Code</title><para id="eip-275"><media id="code2-2" alt="A dog sitting on a couch.">
+	   
+  <image mime-type="image/jpeg" src="../../media/image4-medium.png"/>
+		 
+</media>
+        </para><para id="eip-447">
+
+</para></section><para id="eip-571">Then for each pixel in a resulting image, we compare it to its eight neighboring pixels in the same image and nine neighboring pixels in the images processed by adjacent scales. It’s selected if it’s greater or smaller than all its neighbors. The result is a candidate key point.</para><section id="eip-851"><title>Code</title><para id="eip-483"><media id="code3-2" alt="A dog sitting on a couch.">
+	   
+  <image mime-type="image/jpeg" src="../../media/image5-medium.png"/>
+		 
+</media>
+        </para><para id="eip-690">
+
+</para></section></section><section id="eip-546"><title>Stage 3</title><para id="eip-282">
+To calculate the magnitude and orientation of each key point, we look at all it’s neighboring pixels in the image that is processed with the same scale. 
+
+
+</para><para id="eip-574"><media id="equation" alt="A dog sitting on a couch.">
+	   
+  <image mime-type="image/jpeg" src="../../media/image6-medium.png"/>
+		 
+</media>
+        </para><para id="eip-492">m(x,y) stands for the gradient magnitude of the point and theta(x,y) stands for the orientation of the point. </para><section id="eip-642"><title>Code</title><para id="eip-149"><media id="code6" alt="A dog sitting on a couch.">
+	   
+  <image mime-type="image/jpeg" src="../../media/image7-medium.png"/>
+		 
+</media>
+        </para><para id="eip-143">
+
+</para></section></section></section><para id="delete_me">
+     <!-- Insert module text here -->
+  </para>
+</content>
+
+</document>

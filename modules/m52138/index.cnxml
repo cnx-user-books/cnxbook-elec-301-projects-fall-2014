@@ -1,0 +1,17 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Background and Motivation</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52138</md:content-id>
+  <md:title>Background and Motivation</md:title>
+  <md:abstract>First section</md:abstract>
+  <md:uuid>6d9bbb8f-17ff-4297-b31b-dd716a7118d1</md:uuid>
+</metadata>
+
+<content>
+  <para id="eip-850">Noise has long been an enemy of human beings. It can disrupt communications, impair concentration, and even damage the auditory system if it is sufficiently loud.  The traditional noise cancellation idea involves energy absorption: by strategically placing damping material close to the noise source, much of the sound energy can be converted to heat, therefore reducing the volume of the sound. The soft, porous, multi-layer material covering dance room and studio room walls can damp most of the energy of noise. These methods are referred to as “passive noise cancellation”, since they only passively quarantine, or absorb, noise. The result can be ideal, since most foam can reduce the loudness by up to 35 dB. The weakness of this type of noise cancellation, however, is its scope. All sounds in the absorptive frequency range are reduced; if useful sound information is present, this information is filtered out as well. Passive noise cancellation also has a higher cost and requires more complicated instrument installation. </para><para id="eip-631">To deal with this problem, and to better cancel noise based on its characteristics (as opposed to general cancellation), people invented the idea of active noise control (ANC). Unlike passive noise cancellation, ANC involves playing “anti-noise”. Bose promotes this idea to the public, thus making ANC one of the hottest, most popular topics about “sound” these days.</para><para id="delete_me">
+     <!-- Insert module text here -->
+  </para>
+</content>
+
+</document>

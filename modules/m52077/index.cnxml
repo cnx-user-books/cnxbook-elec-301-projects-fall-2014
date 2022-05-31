@@ -1,0 +1,38 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Background</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52077</md:content-id>
+  <md:title>Background</md:title>
+  <md:abstract/>
+  <md:uuid>5942d3b2-6439-4de9-a878-7e4f9ca01a35</md:uuid>
+</metadata>
+
+<content>
+  <section id="eip-814"><title>Introduction</title><para id="eip-740">Object recognition is one of the hottest areas in computer vision. Finding and identifying objects in an image is fundamental to facial recognition, object tracking in videos, object matching and many other applications. To achieve object recognition (from images), one first must be able to extract distinct features of the image, then correctly identify the object of interest from these key features.  Our group explored three different algorithms. The first, Scale-Invariant Feature Transform, was a method to obtain the distinct features of the image while the other two, Hough Transform and Moment of Inertia, were pattern recognizing algorithms. 
+</para></section><section id="eip-847"><title>Motivation</title><para id="eip-164">We wanted to simulate a user being given a sheet of paper with squares and other shapes on it. The user would tell us how many squares appeared in the image. Because we were highly interested in the field of object recognition we decided to implement two systems and compare the results. Both systems used Scale-Invariant Feature Transform to obtain feature points. The first system then passed those results into the Hough Transform. The second system used the feature points to implement a formula involving the properties of the Moment of Inertia. 
+</para><para id="eip-881"><figure id="fig1"><media id="design1" alt="design1">
+    <image mime-type="image/jpeg" src="../../media/DesignSystem1.png"/>
+  </media>
+  
+<caption>Flow of the system design.
+  </caption></figure></para><para id="eip-948"><figure id="fig2">
+  <media id="template" alt="square">
+    <image mime-type="image/jpeg" src="../../media/Square.jpg"/>
+  </media>
+  <caption>
+    Our square template. 
+  </caption>
+</figure></para><para id="eip-833"><figure id="fig3">
+  <media id="testimage" alt="testImage4">
+    <image mime-type="image/jpeg" src="../../media/TestImage4.png"/>
+  </media>
+  <caption>
+    An example test image.
+  </caption>
+</figure></para></section><para id="delete_me">
+     <!-- Insert module text here -->
+  </para>
+</content>
+
+</document>

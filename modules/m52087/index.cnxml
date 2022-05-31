@@ -1,0 +1,47 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Implementation of Hough Transform</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52087</md:content-id>
+  <md:title>Implementation of Hough Transform</md:title>
+  <md:abstract/>
+  <md:uuid>27b0df59-539b-403a-9682-ef724d5e4d65</md:uuid>
+</metadata>
+
+<content>
+  <section id="eip-796"><title>Introduction</title><para id="eip-391">
+The Hough Transform is a feature extraction technique that estimates parameters of a shape from its boundary points. Advantages of the Hough Transform include that it is scale-invariant, shift-invariant and rotation-invariant. It also functions well with added noise. Disadvantages include that it is computationally expensive and that it can falsely detect multiple instances of a single edge.
+</para></section><section id="eip-530"><title>Approach</title><para id="eip-958">
+The Hough Transform converts points in an edge picture to sinusoids in a parameter space expressed in polar coordinates.
+</para><para id="eip-328">These sinusoids are put into an accumulator. When two points are collinear, the sinusoids corresponding to the two points intersect at a point. These intersections form peaks in the Hough domain. The peaks in the accumulator tell us which features in an image are present. For example, a square has four Hough peaks, corresponding to each corner in a square.</para><para id="eip-35">Features that the Hough Transform can detect include lines, points, and curves such as circles and ellipses in images because these features have parametric representations.</para></section><section id="eip-130"><title>Implementation</title><section id="eip-487"><title>1.	Convert Image to binary scale</title><para id="eip-157">
+a.The first step we need to do is to convert color images to binary images such that the only region of interest are the boundaries of shapes and not the varying colors the shape may have.
+</para><para id="eip-323"><media id="Code1" alt="Matlab code.">
+	   
+  <image mime-type="image/png" src="../../media/HoughCode1.png"/>
+		 
+</media>
+        </para></section><section id="eip-94"><title>2. Given the binary image, we use the Matlab edge function to detect the edges</title><para id="eip-644"><media id="Code2" alt="A dog sitting on a couch.">
+	   
+  <image mime-type="image/png" src="../../media/HoughCode2.png"/>
+		 
+</media>
+        </para><para id="eip-33">
+</para></section><section id="eip-437"><title>3. From the edges we compute the Hough Transform</title><para id="eip-808"><media id="Code3" alt="A dog sitting on a couch.">
+	   
+  <image mime-type="image/png" src="../../media/HoughCode3.png"/>
+		 
+</media>
+        </para><para id="eip-690">
+</para></section><section id="eip-821"><title>4. Finally, we calculate the Hough peaks</title><para id="eip-96"><media id="Code4" alt="Matlab.">
+	   
+  <image mime-type="image/png" src="../../media/HoughCode4.png"/>
+		 
+</media>
+        </para><para id="eip-230">
+
+</para></section></section><para id="delete_me">
+     <!-- Insert module text here -->
+  </para>
+</content>
+
+</document>

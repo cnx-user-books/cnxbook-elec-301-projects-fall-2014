@@ -1,0 +1,31 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Second Experiment</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52140</md:content-id>
+  <md:title>Second Experiment</md:title>
+  <md:abstract>Third Section</md:abstract>
+  <md:uuid>78f29c14-9686-4376-817b-b7fff50699e8</md:uuid>
+</metadata>
+
+<content>
+  <para id="eip-111">After this first experiment, it will be easier to think about 1D sound. Now check the sound waveforms below (recorded on a Sunday morning, in Brochstein Pavilion at Rice University, length 10 seconds).</para><section id="eip-230"><figure id="brochstein"><media id="thewaveform" alt="Picture of 2 waveforms">
+    <image mime-type="image/png" src="../../media/recorded.png"/>
+  </media>
+  
+<caption>Recorded sound wave</caption></figure></section><para id="eip-191">It is easy to see that these two sound waves are exactly the opposite of each other by carefully checking some specific spikes. </para><para id="eip-937">Now if you play the first OR the second piece of data, you would hear some gibberish of background music, people talking, and spoon and plates clinking on a typical Sunday morning. That being said, you should realize that your ears are not as sensitive as your eyes in some way; they cannot detect phase difference monotonically! The second piece of signal, though being the negative version of the first piece, sounds identical to humans. Now if you play the two signals at the same time, you would get absolutely nothing, like what happened to your eyes before: silence!</para><para id="eip-660">To experiment with this more convincingly, try it out with your own speaker set. First make sure you have two audio channels. Open MATLAB, and type in:</para><code id="eip-620" display="block">recObj = audiorecorder; 
+recordblocking(recObj,5); % try to make some noise
+noiseData = getaudiodata(recObj);	
+antiNoiseData = - noiseData;	% invert!
+double_channel = [noiseData,noiseData];
+sound(double_channel,8000);
+</code><para id="eip-743">Now you can hear the piece you’ve just recorded.
+To examine our cancelling theory, type in this:
+</para><code id="eip-749" display="block">double_channel = [noiseData,-noiseData];
+sound(double_channel,8000);
+</code><para id="eip-260">Note that if you are listening to this by your earphones, you would still hear the sound, but notice a subtle difference: your brain automatically calculates the position of the sound source by combining the two sound signals from your left and right ears. If you were playing them with your loudspeakers, however, you would very likely get nothing. Try to place the diaphragms of the speakers right towards each other very closely, and the sound waves will cancel out.</para><para id="eip-147">This is the basic mechanism of ANC. It is widely applied in most noise cancelling systems, such as headphones (to enable one to hear music better), on cars (to reduce the noise of the engine and tires), and in cell phones (to reduce background noise in conversations). While this sounds useful and easy, the real world is not always so straightforward. Detecting the phase of a sound wave is hard. Usually a Phase Locked Loop is used to determine the phase of input noise and to generate a 180-degree phase-shifted "anti-noise" as described above. This algorithm requires a steady noise source (resembling a sinusoidal wave) and is therefore unable to filter out more complex noise such as the background noise of a crowd. Even if the input were a pure sine tone, the reduction would be no more than 10dB. The greatest restriction is the geometry of environment settings. The location of the microphone used to pick up the sound signal and the location of output loudspeakers determine the sound quality of the noise cancellation. As you may have noticed, when you put your two speakers right in front of each other with no space between them, the cancellation works best; as the speakers are moved away from each other, you can hear louder and louder noise. The sound waves tend to reflect off of the wall, or any other surface, sometimes reinforcing each other and resulting in unpredictable behavior. Another limitation is that high frequency noise has really short wavelengths, which makes the distance between ears non-negligible, so that the cancellation signal for the left ear can actually reinforce noise for right ear.</para><para id="delete_me">
+     <!-- Insert module text here -->
+  </para>
+</content>
+
+</document>

@@ -1,0 +1,34 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>First Experiment</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52145</md:content-id>
+  <md:title>First Experiment</md:title>
+  <md:abstract>Second Section</md:abstract>
+  <md:uuid>df30e0c0-da9f-454f-8019-dd32293be357</md:uuid>
+</metadata>
+
+<content>
+  <para id="eip-343">The mechanism is simple. Let’s first experience this in a more direct way, and use another pair of sense organs on your body: your eyes. This is a 2D cancellation.</para><section id="eip-546"><figure id="original-lenna"><title>Lenna Images</title><media id="lenna1" alt="Original Lenna image">
+    <image mime-type="image/jpeg" src="../../media/Lenna.jpg"/>
+  </media>
+
+<caption>Original image</caption></figure>
+
+<figure id="inv-lenna"><media id="lenna3" alt="Inverted Lenna image">
+    <image mime-type="image/jpeg" src="../../media/CLenna.jpg"/>
+  </media>
+  
+<caption>Inverted image</caption></figure>
+
+
+<figure id="blank"><media id="blankimg" alt="Result of adding Figure 1 and Figure 2">
+    <image mime-type="image/png" src="../../media/Blank.png"/>
+  </media>
+  
+<caption>The result of combining the two pictures</caption></figure></section><para id="eip-442">This is the famous standard DSP processing image, Lenna. Figure 1 is the original one, and Figure 2 is its inverted image, which means every pixel is the complementary color of the original.</para><para id="eip-572">Our eyes can perfectly detect the difference between these two images. Now imagine setting the transparency of both images to 50%, and put one of them on the top of the other one. It feels like seeing through two think films. As you can see in Figure 3, it finally results in a complete blank sheet!</para><para id="delete_me">
+     <!-- Insert module text here -->
+  </para>
+</content>
+
+</document>

@@ -1,0 +1,14 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Conclusion</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52168</md:content-id>
+  <md:title>Conclusion</md:title>
+  <md:abstract>Sixth Section</md:abstract>
+  <md:uuid>e0786f47-fd70-402d-984e-a8279030be96</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me">This ANC system has many advantages. It is not constrained to the geometry of the environment, since the microphone picks up the sound and builds an adaptive filter based on the input noise. If the location is changing, it takes an extra loop to update the secondary training inside the main function. Furthermore, even sound that is louder than the desired signal volume could be filtered out as long as it’s a clean tone.</para><para id="eip-515">The biggest challenge is the design of the FIR filter and the choice of audio recording. We played around with different number of orders, sampling rates, and buffer sizes to generate the optimal sound from MATLAB. We successfully filtered out noise, and it is pretty amazing seeing it work.</para></content>
+
+</document>

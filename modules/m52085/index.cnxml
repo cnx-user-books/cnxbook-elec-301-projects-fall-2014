@@ -1,0 +1,140 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Results</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52085</md:content-id>
+  <md:title>Results</md:title>
+  <md:abstract/>
+  <md:uuid>3418450f-17f8-4cf8-a656-51aa51baed19</md:uuid>
+</metadata>
+
+<content>
+  <section id="eip-163"><title>Scale-Invariant Feature Results</title><para id="eip-884"><figure id="Results1">
+  <title>SIFT Results on image of Rice</title>
+  <media id="results" alt="Rice SIFT">
+    <image mime-type="image/png" src="../../media/SIFTResults1.png"/>
+  </media>
+  <caption>
+     The curves are well detected but horizontal and vertical lines are lost. 
+  </caption>
+</figure></para><para id="eip-750"><figure id="SIFTResults2">
+  <title>SIFT Results on BIBO Bear</title>
+  <media id="Sift2" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/SIFTResults2.png"/>
+  </media>
+  <caption>
+     The words BIBO can be seen on the bear's chest.
+  </caption>
+</figure></para><para id="eip-440"><figure id="SIFT3">
+  <title>SIFT results on President Leebron</title>
+  <media id="Siftresults3" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/SIFTResults3.png"/>
+  </media>
+  <caption>
+     It is evident that it is the image of a person.
+  </caption>
+</figure></para><para id="eip-733">Although SIFT is extremely useful, it cannot easily find vertical or horizontal lines because they are not considered feature points. Since our image templates were made up of almost all straight lines, we had a significant issue. Due to time constraints we chose to implement the edge functions in MatLab. Instead of passing the results of SIFT into the Hough Transform and Moment of Inertia we passed the results of the edge functions in MatLab. </para></section><section id="eip-188"><title>Results of Matlab Functions</title><para id="eip-942"><figure id="Matlab">
+  <title>Results of Passing a Test Image into Matlab Edge Functions</title>
+  <media id="MatlabResults" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/MatlabResults.png"/>
+  </media>
+</figure></para><para id="eip-220">Clearly the edge results from matlab are much more suited to our type of test images.</para><section id="eip-923"><para id="eip-349"/></section><section id="eip-508"><para id="eip-116">
+</para></section><para id="eip-973">
+</para></section><section id="eip-639"><title>Hough Transform Results</title><para id="eip-921"><figure id="Hough1">
+  <title/>
+  <media id="HoughResults1" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/HoughResults1.png"/>
+  </media>
+  <caption>The Hough Transform of the template image.
+  </caption>
+</figure></para><para id="eip-949"><figure id="Hough2">
+  <title/>
+  <media id="HoughResults2" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/HoughResults2.png"/>
+  </media>
+  <caption>
+  </caption>
+</figure></para><para id="eip-693"><figure id="Hough3">
+  <title/>
+  <media id="HoughResults3Noise" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/HoughResults2Noise.png"/>
+  </media>
+  <caption>
+  </caption>
+</figure></para><para id="eip-608">Even with noise same peaks are found.</para><para id="eip-323"><figure id="Hough5">
+  <title/>
+  <media id="HoughResults3" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/HoughResults3.png"/>
+  </media>
+  <caption>
+  </caption>
+</figure></para><para id="eip-631"><figure id="Hough6">
+  <title/>
+  <media id="HoughR3Noise" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/HoughResults3Noise.png"/>
+  </media>
+  <caption>Same peaks are found with noise.
+  </caption>
+</figure></para><para id="eip-812"><figure id="Hough7">
+  <title/>
+  <media id="HoughResult4" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/HoughResults4.png"/>
+  </media>
+  <caption>
+  </caption>
+</figure></para><para id="eip-615"><figure id="Hough8">
+  <title/>
+  <media id="HoughResultNoise4" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/HoughResults4Noise.png"/>
+  </media>
+  <caption>
+  </caption>
+</figure></para><para id="eip-918">With this amount of noise the peaks are still found. As long as the noise does not interfere with the edges the peaks will always be found. However, if the edges are lost then the Hough Peaks will be incorrect.</para><para id="eip-643"/></section><section id="eip-652"><title>Moment of Inertia Results</title><section id="eip-304"><title>Description of Steps in Demo</title><list id="eip-395" list-type="enumerated" number-style="arabic"><item>Read in the image as a matrix of type ‘double’ and turn it into a logical array (im2bw function)</item>
+<item>Using bwboundaries functions, find all connected boundaries (default is 4-connectedness of pixel)</item>
+<item>Iterate through all closed boundaries and mask all pixels within boundary to be 1 and 0 outside the boundary </item>
+<item> Find the moment of inertia of the masked images which is normalized by the square total number of pixels </item>
+</list><para id="eip-709">
+</para></section><para id="eip-157"><figure id="MOI1">
+  <title/>
+  <media id="MOIResults1" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/MOIResults1.png"/>
+  </media>
+  <caption>
+  </caption>
+</figure></para><section id="eip-912"><title>Moment of Inertia Method on Simple Image</title><para id="eip-292"><figure id="MOI2">
+  <title/>
+  <media id="MOIResults2" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/MOIResults2.png"/>
+  </media>
+  <caption>
+  </caption>
+</figure></para><para id="eip-658">Moment of Inertia Method works perfectly on a test image without overlaps where the shapes are significantly different.</para><para id="eip-782">However, bwboundaries returns closed boundaries which would create problems when you have intersection of lines.</para><para id="eip-212">
+</para></section><section id="eip-765"><title>Moment of Inertia Method on Image with Overlaps</title><para id="eip-414"><figure id="MOI3">
+  <title/>
+  <media id="MOIResults3" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/MOIResults3.png"/>
+  </media>
+  <caption>
+  </caption>
+</figure></para><para id="eip-252">We can clearly see from the previous images that the function now detects 4 objects instead of the three that we are interested in, shown below as the two larger squares traced out by red outline and the smaller one filled by the color green.
+</para><para id="eip-516"><figure id="MOI4">
+  <title/>
+  <media id="MOIResults4" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/MOIResults4.png"/>
+  </media>
+  <caption>
+  </caption>
+</figure></para></section><section id="eip-828"><title>Moment of Inertia Method on Image with Similar Shapes</title><para id="eip-439"><figure id="MOI5">
+  <title/>
+  <media id="MOIResults5" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/MOIResults5.png"/>
+  </media>
+  <caption> 
+  </caption>
+</figure></para><para id="eip-966">In the above image, objects in the top right and top left corners of the subplots differ in moment of inertia by 0.703%, in spite of having drastically different shapes. 
+However, we note that such algorithm would only produce false positive. </para></section></section><para id="delete_me">
+     <!-- Insert module text here -->
+  </para>
+</content>
+
+</document>

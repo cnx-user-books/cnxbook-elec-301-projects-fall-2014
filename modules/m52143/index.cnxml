@@ -1,0 +1,56 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Adaptive Filter System</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52143</md:content-id>
+  <md:title>Adaptive Filter System</md:title>
+  <md:abstract>Fourth Section</md:abstract>
+  <md:uuid>88b55b0b-1ca2-42bc-9302-c0928f16d2e2</md:uuid>
+</metadata>
+
+<content>
+  <section id="eip-192"><title>Introduction to LMS Adaptive Filter</title><para id="eip-551">Solving the lower frequency noise speaker-microphone topological problem requires implementation of adaptive filters. An adaptive filter has two major components: an FIR filter and an Adaptive Algorithm. The FIR filter’s transfer function is controlled by variable parameters, computed by the adaptive algorithm, that optimize output. The algorithm for this project is Least Mean Squares (LMS). The whole process can be described by the diagram below:</para>
+
+<figure id="theprocess"><media id="filterprocess" alt="Picture of System Block Diagram">
+    <image mime-type="image/png" src="../../media/process.png"/>
+  </media>
+  
+<caption>System Block diagram</caption></figure><para id="eip-129">The FIR filter is constructed with N coefficients, w, and delays to generate the desired output. With linear combinations of these delayed signals, the filter can produce excellent results.</para>
+
+
+<figure id="FIRimage"><media id="firimg" alt="FIR diagram">
+    <image mime-type="image/png" src="../../media/FIR.PNG"/>
+  </media>
+  
+<caption>Structure of an FIR filter</caption></figure>
+
+
+<figure id="FIRimage2"><media id="firimg2" alt="LMS diagram">
+    <image mime-type="image/png" src="../../media/LMS.PNG"/>
+  </media>
+  
+<caption>LMS Algorithm Diagram</caption></figure><para id="eip-238">Let’s first go through the system and get to know the basic idea. The system has two inputs and one output. The two inputs are the pure noise Y(n) and the input recorded in the environment (human voice V(n) plus noise S(n)). The output is our desired signal (human voice without noise or with little noise) Eestimate(n). It’s an estimated signal of pure human voice; it is also called the error signal in the LMS algorithm.</para><para id="eip-724">The system consists of a summer and an Adaptive Filter. The adaptive filter consists of a FIR filter (shown in the figure above) and an adaptive algorithm. The noise cancellation happens in the summer. We will see its details in the next paragraph. The feedback loop is the most important part of this system. It takes the output of the system Eestimate(n) (also the output of the summer) and feeds it to the adaptive algorithm. Then the adaptive algorithm updates the coefficients w(n) of the FIR filter. The output of the adaptive filter is the signal Yestimate(n). Feed this output to the summer. By doing so, we improve the approximation of noise Yestimate(n). In the summer we do the cancellation again and get a new output Eestimate(n).  This completes one loop. After each iteration we compute the power of Eestimate(n), the number we want to minimize using the LMS algorithm. In short, the main function of the adaptive filter is to minimize the power of the error signal Eestimate(n) by adjusting the coefficients of the FIR filter via the LMS algorithm.</para><para id="eip-825">Now let’s zoom into the details of the system. It runs in following five steps:</para><list id="eip-336" list-type="enumerated" number-style="arabic"><item>Set up a initial value for w<sub>m</sub>(0)</item>
+<item>Design the output of the FIR filter: Y<sub>estimate</sub>(n)=∑<sup>M</sup><sub>m=0</sub>w<sub>m</sub>(n)Y(n-m), where M is the order of the FIR filter.</item>
+<item>Get E<sub>estimate</sub>(n), where E<sub>estimate</sub>(n)=x(n)-Y<sub>estimate</sub>(n). This step happens in the Addition component of the system. </item>
+
+
+<item>Use the LMS algorithm to update the coefficients w(n) of the FIR filter. w<sub>m</sub>(n+1)= w<sub>m</sub>(n)+2u<sub>Eestimate</sub>(n)*s(n-m), for m in [0,M].  The power we want to minimize is: E[E<sub>estimate</sub>(n)<sup>2</sup>]=E[V(n)<sup>2</sup>]+(E[S(n)-Y<sub>estimate</sub>(n)])<sup>2</sup>   Notice that we introduced a new variable u here. We will explain it later.   </item>
+
+<item>Change n to n+1, and repeat the four steps above</item></list><para id="eip-547">Let’s call u in step 4 the “convergence factor”.  We want 0&lt;u&lt;1/(k<sub>max</sub>), where k<sub>max</sub> is the largest eigenvalue of the auto-correlation matrix R<sub>xx</sub>. The reason for this inequality will be explained in the next paragraph. Now the difficult part is finding the value of u. Note that the statistical information of x(n) is unknown in practical use of this system, since we do not have predictions about either the noise or the speaker’s voice signal. This means we do not know what R<sub>xx</sub> is. Therefore, under a certain environment, we need to try different values to get the best u. If u is very small, it takes the system a long time to converge. If u is very big, the system converges fast with the cost of quality of the noise cancellation. Thus, trying values of u is crucial to this project.</para><para id="eip-752">Now let’s see where 0&lt;u&lt;1/k<sub>max</sub> comes from. This whole system is actually a combination of Weiner’s Filter and an adaptive algorithm. We will skip the mathematical computation of Weiner’s Filter here, since it is not our main focus in the project. When this system’s iteration goes to infinity, the expectation of the vector w<sub>m</sub>(n) will converge to the Weiner’s Filter solution. However, it has a restriction that abs(1-2u*k<sub>max</sub>)&lt;1 (absolute value of diagonal elements is less than 1), which gives us 0&lt;u&lt;1/k<sub>max</sub> directly.</para></section><section id="eip-619"><title>Third Experiment (Result of Testing the Adaptive Filter System)</title><para id="eip-213">Now let’s discuss the results of our testing. We passed a recording of a human voice into this system, together with constant-frequency sine wave noise. Suppose the frequency of this sine wave is W<sub>0</sub> (we are using a capital W here because we are using lowercase w to represent the coefficients of the FIR filter).</para><para id="eip-428">Since the pure noise signal is a constant-frequency sine wave with frequency W<sub>0</sub>, we know that Y(n)=exp(jW<sub>0</sub>n). Thus,</para><list id="eip-650" list-type="enumerated" number-style="arabic"><item>w<sub>m</sub>(n+1)=w<sub>m</sub>(n)+2uE<sub>estimate</sub>(n)exp(-jW<sub>0</sub>(n-m)), , where m=0,1,2,…,M </item>
+
+<item> Since w<sub>m</sub>(n)=y<sub>m</sub>(n)exp(-jW<sub>0</sub>(n-m)), by plugging Equation 2 into Equation 1, we get: </item>
+<item>y<sub>m</sub>(n+1)exp(-jW<sub>0</sub>)=y<sub>m</sub>(n)+2uE<sub>estimate</sub>(n)</item>
+<item>Taking the z-transform of Equation 3, we get z*y<sub>m</sub>(z)exp(-jW<sub>0</sub>)=y<sub>m</sub>(z)+2uE(z), where E(z) is the Z-transform of E<sub>estimate</sub>(n)</item>
+<item>Then, y<sub>m</sub>(z)=E(z)*2uexp(jW<sub>0</sub>)/(z-exp(jW<sub>0</sub>))</item>
+<item>Since S<sub>estimate</sub>(n)=∑<sup>M</sup><sub>m=0</sub>w<sub>m</sub>(n)exp(jW<sub>0</sub>(n-m)),</item>
+<item>by plugging Equation 2 into Equation 6, we get S<sub>estimate</sub>(n)= ∑<sup>M</sup><sub>m=0</sub>y<sub>m</sub>(n)</item>
+<item>Taking the z-transform of both sides of Equation 7 and using Equation 5, we get S(z)=E(z)*2u(M+1)exp(jW<sub>0</sub>)/(z-exp(jW<sub>0</sub>)), where S(z) is the z-transform S<sub>estimate</sub>(n).</item>
+<item>Since E<sub>estimate</sub>(n)=x(n)-S<sub>estimate</sub>(n), </item>
+<item> Taking the z-transform of Equation 9, we get E(z)=X(z)- E(z)*2u(M+1)exp(jW<sub>0</sub>)/(z-exp(jW<sub>0</sub>))</item>
+<item>Therefore, the transfer function H(z)=E(z)/X(z)=[z-exp(jW<sub>0</sub>)]/[z-exp(jW<sub>0</sub>(1-2u(M+1)))]</item> 
+</list><para id="eip-767">From this transfer function (Equation 11), we get a zero at z=exp(jW<sub>0</sub>); this means the system is canceling the sine wave with frequency W<sub>0</sub> from the system input x(n). This is the exact goal of this system. Also, notice that if we choose a very small “convergence factor” u, all the poles of this system would be inside the unit circle of the Z plane, which suggests that the system is BIBO stable.</para><para id="eip-844">After we input human voice and a constant-frequency sine wave through this system, the result is pretty good. We can hear the human voice clearly with the filter on.</para></section><section id="eip-714"><title>Advantages of Adaptive Filter System with LMS Algorithm</title><para id="eip-862">In practice, we don’t know statistical information of the input such as the auto-correlation function R<sub>xx</sub>. Adaptive Filters and LMS algorithm do not need this information to accomplish noise cancellation. This is a big advantage over the Weiner Filter and Kalman Filter.</para><para id="eip-899">Furthermore, the LMS algorithm requires fewer mathematical complications than other algorithms (such as RLS), and is also easier to be implemented in practice.</para><para id="eip-639">FIR filters have linear phase, so the signal won’t be distorted, which is a big advantage over IIR filters. Moreover, FIR filters have only zeros, and are always BIBO stable. Stability is crucial for signal processing.</para></section><para id="delete_me">
+     <!-- Insert module text here -->
+  </para>
+</content>
+
+</document>

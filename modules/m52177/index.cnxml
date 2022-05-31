@@ -1,0 +1,14 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Applications and Future Improvements</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52177</md:content-id>
+  <md:title>Applications and Future Improvements</md:title>
+  <md:abstract>Fifth section</md:abstract>
+  <md:uuid>bfa94968-a220-4bb4-a6c4-90164d563e68</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me">This noise cancellation method is useful in many real applications. The first usage would be crowd control. Imagine calling out something in the middle of a huge noisy crowd. Even with the help of microphones and amplified loudspeakers, it is hard to make oneself heard since the crowd noise would be picked up by the microphone as well. An easy fix is to implement this noise cancellation system, and with some simple DSP tricks, raise the sound frequency of the speaker by a few decades (just above the noise frequency baseline), and everyone could hear a clean, loud tone. Anything with voice communication could implement this system, and the effect would just sound like the narrative is mixed later to the original tape.</para><para id="eip-98">The main problem of this system is that currently it is not truly real-time under the MATLAB environment. We are recording voices for a certain length of time (5 seconds, for example) and feeding this recording into our system. We tried saying 1 to 10 to the system, and when we listened to our output, we can only hear 1 to 6; information between 7 and 10 is chopped off. That means the tradeoff between the speed of convergence and the quality of noise cancellation needs to be considered more carefully in future works. Furthermore, the system does not work well for noise with “high” frequencies above 2kHz. Figuring out how to make this system work in a larger range of frequencies is another issue we need to consider in the future.</para></content>
+
+</document>

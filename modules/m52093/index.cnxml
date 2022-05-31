@@ -1,0 +1,30 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Conclusion and Future Work</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52093</md:content-id>
+  <md:title>Conclusion and Future Work</md:title>
+  <md:abstract/>
+  <md:uuid>935d805c-381a-4ade-8590-4e717c8bc5de</md:uuid>
+</metadata>
+
+<content>
+  <section id="eip-202"><title>Conclusion</title><section id="eip-985"><title>Scale-Invariant Feature Transform</title><para id="eip-829">After performing SIFT on a number of images and finding the location of the key points on those images, we realized that although SIFT recognizes the sharp corners and curvatures very well, it would not recognize key point along straight lines. Looking back at the SIFT algorithm, we found out that this is because straight lines are not scale and rotational invariant as compared to corners. Since SIFT focuses on the robustness of key points and on the features of an image, straight lines do not qualify as features. </para><para id="eip-431">Since, our goal is to identify squares in an image mainly comprised of geometric figures we are mostly dealing with straight lines. Hence, SIFT would not be a suitable algorithm for us to locate the edges in the image. We would need to resort to other methods. Due to time constraints we turned to Matlab edge Functions.</para></section><section id="eip-583"><title>Hough Transform</title><para id="eip-706">The Hough Transform correctly identified the squares in an image but was computationally expensive. Every single pixel in the image had to be looked at. Also if enough noise was added that an edge was lost the Hough transform ceased to work at all. Overall the Hough Transform is a more robust approach because it can be generalized to even more complex situations where the Moment of Inertia method cannot.</para></section><section id="eip-268"><title>Moment of Inertia</title><para id="eip-142">The Moment of Inertia method proved to be extremely rudimentary. It worked on simple images where the shapes had very different Moments of Inertia and the shapes did not overlap. But if the shapes overlapped the boundaries were lost and the shapes were not identified correctly. Also, if two shapes had similar Moments of Inertia the system would give a false positive. Obviously Moment of Inertia is not a method that can stand on its own. However, it only gives false positives. It won't accidentally mask out an actual result. 
+Due to that and the fact that it is computationally very cheap, it could be used as a preprocessor for a more computationally expensive algorithm. </para></section><para id="eip-639">
+
+</para></section><section id="eip-450"><title>Future Works</title><para id="eip-317">Continuing on from here, we want to optimize our implementations. After successfully improving the speed of our code we would want to solve the issue our Moment of Inertia method has with overlapping images. This could be solved by starting from the smallest shape and moving outward. Finally, we would reorganize our system to match the following design: 
+</para><para id="eip-60"><figure id="System">
+  <title>New Design Model</title>
+  <media id="design" alt="A dog sitting on a bed">
+    <image mime-type="image/png" src="../../media/DesignSystem2.png"/>
+  </media>
+  <caption>
+   A better system design. Use Matlab edge detection, preprocess with Moment of Inertia, and then pass through Hough Transform
+
+  </caption>
+</figure></para><para id="eip-672">Implementing this design would save computation time in the Hough transform. The Moment of Inertia would mask out shapes that were clearly not correct which would reduce the number of Hough Peaks and reduce the number of calculations. After implementing this improved system we would want to create our own way of obtaining the edges of our images besides Matlab.</para></section><para id="delete_me">
+     <!-- Insert module text here -->
+  </para>
+</content>
+
+</document>

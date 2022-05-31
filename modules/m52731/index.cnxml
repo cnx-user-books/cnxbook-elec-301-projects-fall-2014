@@ -1,0 +1,15 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Introduction</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m52731</md:content-id>
+  <md:title>Introduction</md:title>
+  <md:abstract/>
+  <md:uuid>d1928846-3c03-4765-9401-925589952c27</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me"><!-- Insert module text here -->
+Rice University's ELEC 301 course introduces the notion of signal processing, and deals with signals, systems, and transforms, from their theoretical mathematical foundations to practical implementation in circuits, computer software and hardware. </para><para id="eip-256">The following is a collection of the seven group projects from the Fall 2014 offering of the course.</para></content>
+
+</document>
